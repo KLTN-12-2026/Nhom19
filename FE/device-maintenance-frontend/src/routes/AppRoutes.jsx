@@ -1,29 +1,53 @@
-// Folder routes: cấu hình định tuyến React Router.
-// File này khai báo đường dẫn và component tương ứng.
+// src/routes/AppRoutes.jsx
+// Cấu hình định tuyến React Router hoàn chỉnh cho Module 1 - Authentication và các màn hình chính
 
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import AuthLayout from "../layouts/AuthLayout";
 import MainLayout from "../layouts/MainLayout";
+import ProtectedRoute from "../components/common/ProtectedRoute";
+
+// Các trang xác thực
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import ForgotPassword from "../pages/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword";
+import ChangePassword from "../pages/ChangePassword";
+
+// Các trang nghiệp vụ
+import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 import Devices from "../pages/Devices";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 
 export default function AppRoutes() {
   return (
     <Routes>
+      {/* 1. Nhóm các trang Xác thực (Guest/Public Routes bọc trong AuthLayout SaaS) */}
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Route>
 
-      <Route element={<MainLayout />}>
+      {/* 2. Nhóm các trang Yêu cầu Đăng nhập (Protected Routes bọc trong MainLayout) */}
+      <Route
+        element={
+          <ProtectedRoute>
+            <MainLayout />
+          </ProtectedRoute>
+        }
+      >
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/devices" element={<Devices />} />
+        <Route path="/change-password" element={<ChangePassword />} />
       </Route>
 
-      <Route path="*" element={<NotFound />} />
+      {/* 3. Trang 404 Not Found */}
+      <Route path="/404" element={<NotFound />} />
+      <Route path="*" element={<Navigate to="/404" replace />} />
     </Routes>
   );
 }

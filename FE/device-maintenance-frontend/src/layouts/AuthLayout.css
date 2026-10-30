@@ -1,0 +1,215 @@
+/* src/layouts/AuthLayout.css */
+
+/* Bao bọc toàn màn hình với nền hoa văn chấm bi lưới SaaS */
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  background-image: radial-gradient(#d1d5db 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  padding: 2rem 1.25rem;
+  box-sizing: border-box;
+}
+
+/* Thẻ Card trung tâm nguyên khối bo góc mềm */
+.auth-modal-card {
+  display: flex;
+  width: 100%;
+  max-width: 1050px;
+  min-height: 610px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.85);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ===================================================
+   CỘT TRÁI: BANNER THƯƠNG HIỆU & TÍNH NĂNG NỔI BẬT
+   =================================================== */
+.auth-sidebar-banner {
+  width: 43%;
+  background: radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.28) 0%, transparent 60%),
+              linear-gradient(165deg, #1d4ed8 0%, #1e40af 40%, #0284c7 75%, #0f766e 100%);
+  padding: 2.75rem 2.25rem;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  position: relative;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Header thương hiệu */
+.auth-banner-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 2.5rem;
+}
+
+.auth-banner-logo-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.auth-banner-brand-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.auth-brand-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.auth-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(147, 197, 253, 0.25);
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #93c5fd;
+  letter-spacing: 0.02em;
+}
+
+/* Danh sách 3 tính năng */
+.auth-banner-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.auth-banner-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.feature-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #93c5fd;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.feature-content {
+  flex: 1;
+}
+
+.feature-heading {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px;
+  line-height: 1.35;
+}
+
+.feature-description {
+  font-size: 0.8125rem;
+  color: #dbeafe;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Footer chân banner */
+.auth-banner-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: rgba(219, 234, 254, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1.125rem;
+  margin-top: 2rem;
+}
+
+/* ===================================================
+   CỘT PHẢI: FORM CHỨC NĂNG (LOGIN, REGISTER, ...)
+   =================================================== */
+.auth-content-panel {
+  flex: 1;
+  padding: 3rem 2.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   =================================================== */
+@media (max-width: 900px) {
+  .auth-modal-card {
+    flex-direction: column;
+    max-width: 520px;
+  }
+
+  .auth-sidebar-banner {
+    width: 100%;
+    padding: 2rem 1.75rem;
+  }
+
+  .auth-banner-features {
+    display: none; /* Thu gọn các tính năng trên mobile để người dùng đăng nhập nhanh */
+  }
+
+  .auth-banner-footer {
+    display: none;
+  }
+
+  .auth-banner-header {
+    margin-bottom: 0;
+  }
+
+  .auth-content-panel {
+    padding: 2.25rem 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page-wrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  .auth-modal-card {
+    border-radius: 14px;
+  }
+
+  .auth-content-panel {
+    padding: 1.75rem 1.25rem;
+  }
+}

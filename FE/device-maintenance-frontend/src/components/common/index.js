@@ -1,3 +1,5 @@
-// Folder components/common: component dùng lại nhiều nơi (header phụ, empty state, loader...).
+// src/components/common/index.js
+// Export các components dùng chung
 
-export {};
+export { default as ProtectedRoute } from "./ProtectedRoute";
+export { default as Navbar } from "./Navbar";

@@ -1,10 +1,8 @@
-// Folder hooks: custom React hooks.
-// File này xử lý logic đăng nhập / phiên người dùng.
+// src/hooks/useAuth.js
+// Custom Hook tiện ích để truy cập Auth Context trong toàn bộ ứng dụng
 
-import { useState } from "react";
+import { useAuthContext } from "../context/AuthContext";
 
 export default function useAuth() {
-  const [user, setUser] = useState(null);
-
-  return { user, setUser };
+  return useAuthContext();
 }
