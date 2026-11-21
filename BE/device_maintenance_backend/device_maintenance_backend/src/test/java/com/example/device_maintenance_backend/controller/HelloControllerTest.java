@@ -7,11 +7,11 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(HelloController.class)
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc(addFilters = false)
 class HelloControllerTest {
 
 	@Autowired
@@ -21,6 +21,8 @@ class HelloControllerTest {
 	void helloReturnsMessage() throws Exception {
 		mockMvc.perform(get("/api/v1/hello"))
 				.andExpect(status().isOk())
-				.andExpect(content().string("hello diep lien tu"));
+				.andExpect(jsonPath("$.status").value(200))
+				.andExpect(jsonPath("$.data").value("hello diep lien tu"))
+				.andExpect(jsonPath("$.total").doesNotExist());
 	}
 }
